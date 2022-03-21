@@ -1,0 +1,59 @@
+---
+title: Entity Framework
+categories: c# 
+tags: 
+  - c# 
+  - code/db first
+description:
+keyword: 'EF Framework , EF'
+#cover: /img/html-enterkeyHint/enterkeyHint.jpg
+---
+
+# EF FrameWork 簡介
+EF 全稱 Entity Framework ， 是微軟以 ADO.NET 為基礎所發展出來的物件關聯對應 (O/R Mapping) 解決方案。ADO.NET Entity Framework 以 Entity Data Model (EDM) 為主，將資料邏輯層切分為三塊，分別為 Conceptual Schema, Mapping Schema 與 Storage Schema 三層，其上還有 Entity Client，Object Context 以及 LINQ 可以使用。
+
+## 概念層結構
+概念層結構定義了物件模型 (Object Model)，讓上層的應用程式碼可以如物件導向的方式般存取資料，概念層結構是由 CSDL (Conceptual Schema Definition Language) 所撰寫
+
+## 對應層結構
+對應層結構負責將上層的概念層結構以及下層的儲存體結構中的成員結合在一起，以確認資料的來源與流向。對應層結構是由 MSL (Mapping Specification Language) 所撰寫。
+
+## 儲存層結構
+儲存層結構是負責與資料庫管理系統（DBMS）中的資料表做實體對應 (Physical Mapping)，讓資料可以輸入正確的資料來源中，或者由正確的資料來源取出。它是由 SSDL (Storage Schema Definition Language) 所撰寫[
+
+---
+# 使用方式
+大家因該都有聽過 Code First 或是 DB First ，怎麼聽都聽不懂這裡一次帶你看，如何使用這兩種。
+(ps 範例使用 ```控制台應用程式（console application）``` )
+
+## Code First
+Code First 如同字面上的意思，就是以Code為主，意思是我們只要修改Code，資料庫用Code項目新增。
+操作前，先檢查使否有下方的條件範圍。
+{% note info flat %}
+  ### 必要條件
+  您必須至少安裝 Visual Studio 2010 或 Visual Studio 2012，才能完成此逐步解說。
+  如果您使用 Visual Studio 2010，也需要安裝 NuGet 。
+{% endnote %}
+
+### 安裝 Entity Framework 
+要使用 Entity Framework 中的型別，請先新增 EntityFramework 套件
+MarketPlace　(new NuGet)   : https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManager
+package (Entity Framework ): https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Relational.Design/1.1.6?_src=template
+package (Entity Framework ): https://www.nuget.org/packages/Newtonsoft.Json/13.0.1?_src=template
+
+### 創建 Models 
+```cs
+    class UserAccessContext : DbContext
+    {
+        public DbSet<User> Users { get; set; }
+    }
+
+    class User { 
+        public string Name { get; set; }
+        public string Age { get; set; }
+        public string Phone { get; set; }
+        public string Sex { get; set; }
+    }
+```
+
+## DB First 
