@@ -1,0 +1,7 @@
+{
+    "pasteImage.defaultName": "YYYYMMDD_HH-mm-ss",
+    "pasteImage.path": "${currentFileDir}../../../image",
+    "pasteImage.prefix": "/",
+    "pasteImage.insertPattern": "${imageSyntaxPrefix}/image/${imageFileName}${imageSyntaxSuffix}",
+    "pasteImage.forceUnixStyleSeparator": true,
+}
